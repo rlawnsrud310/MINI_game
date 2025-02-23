@@ -61,7 +61,10 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: ElevatedButton(
                     onPressed: () {
                       print("전투하기 버튼 클릭");
-                      Navigator.pushNamed(context, "/game/battle");
+                      Navigator.pushNamed(context, "/game/battle",
+                      arguments: {
+                        "id" : "$id"
+                      });
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.white.withOpacity(0.8),

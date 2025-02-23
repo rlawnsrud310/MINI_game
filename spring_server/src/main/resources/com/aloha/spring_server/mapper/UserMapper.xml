@@ -19,4 +19,44 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <select id="selectId" resultType="Users">
         SELECT * FROM user WHERE id = #{id};
     </select>
+
+
+<!-- 서버구동이라 빽 미리짰음 -->
+    <!-- 경험치 수정 -->
+    <update id="expUp">
+        UPDATE `user`
+            SET exp = #{exp}
+        WHERE id = #{id};
+    </update>
+
+    <!-- 레벨 수정 -->
+    <update id="lvUp">
+        UPDATE `user`
+            SET lv = #{lv}
+        WHERE id = #{id};
+    </update>
+    
+    <!-- 경험치 레벨 동시 반영 -->
+    <update id="expLvUp">
+        UPDATE `user`
+            SET exp = #{exp},
+                lv = #{lv}
+        WHERE id = #{id};
+    </update>
+
+    <!-- 경험치 레벨 동시증가 -->
+    <update id="plusLvExp">
+        UPDATE `user`
+            SET exp = exp + #{exp},
+                lv = lv + #{lv}
+        WHERE id = #{id};
+    </update>
+
+    <!-- 공격력 변동 -->
+    <update id="atkPM">
+        UPDATE `user`
+            SET atk = atk + #{atk}
+        WHERE id = #{id};
+    </update>
 </mapper>
+

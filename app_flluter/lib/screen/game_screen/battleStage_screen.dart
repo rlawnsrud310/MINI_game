@@ -29,7 +29,8 @@ class _BattlestageScreenState extends State<BattlestageScreen> {
 
   void mobInfo() async {
     try {
-      Response response = await mobService.rand_mob();
+      Response<dynamic> response = await mobService.rand_mob();
+      print("타입 : ${response.data}");
       var data = response.data;
       setState( () {
         no = data["no"] as int;
@@ -72,17 +73,7 @@ class _BattlestageScreenState extends State<BattlestageScreen> {
                   ),
                 ),
                 Center(
-                  child: ElevatedButton(
-                    onPressed: () {
-                      print("중앙 버튼 클릭");
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.white.withOpacity(0.8),
-                      padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 16),
-                      textStyle: const TextStyle(fontSize: 18),
-                    ),
-                    child: const Text("시작하기"),
-                  ),
+
                 ),
               ],
             ),
@@ -93,7 +84,7 @@ class _BattlestageScreenState extends State<BattlestageScreen> {
             height: MediaQuery.of(context).size.height * 0.15,
             child: Row(
               children: [
-                _buildBottomButton("상점"),
+                _buildBottomButton("도망가기"),
                 _buildBottomButton("HOME"),
                 _buildBottomButton("내정보"),
               ],

@@ -11,4 +11,5 @@ public interface MobService {
 
     // 번호로 조회
     public Mob selectNo(int no);
+
 }

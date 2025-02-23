@@ -15,4 +15,10 @@ class MobService {
       rethrow;
     }
   }
+
+  // 있어야하는거
+  /**
+   * 처치시 경험치 증가
+   * 
+   */
 }

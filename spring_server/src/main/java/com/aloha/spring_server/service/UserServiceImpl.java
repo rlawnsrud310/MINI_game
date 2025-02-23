@@ -33,4 +33,34 @@ public class UserServiceImpl implements UserService {
         return users;
     }
 
+    @Override
+    public int expUp(int exp, String id) {
+        int result = userMapper.expUp(exp, id);
+        return result;
+    }
+
+    @Override
+    public int lvUp(int lv, String id) {
+        int result = userMapper.lvUp(lv, id);
+        return result;
+    }
+
+    @Override
+    public int expLvUp(int exp, int lv, String id) {
+        int result = userMapper.expLvUp(exp, lv, id);
+        return result; 
+    }
+
+    @Override
+    public int plusLvExp(int exp, int lv, String id) {
+        int result = userMapper.plusLvExp(exp, lv, id);
+        return result;
+    }
+
+    @Override
+    public int atkPM(int atk, String id) {
+        int result = userMapper.atkPM(atk, id);
+        return result;
+    }
+
 }
