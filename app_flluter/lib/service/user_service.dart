@@ -14,8 +14,10 @@ class UserService {
     try {
       final response = await dio.post('$host/user/join', data : data);
       if(response.statusCode == 200 || response.statusCode == 201){
+        print("회원가입 성공");
         return true;
       } else{
+        print("회원가입 실패");
         return false;
       }
     } catch (e) {

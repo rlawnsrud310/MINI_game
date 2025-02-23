@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:app_flluter/service/mob_service.dart';
+import 'package:dio/dio.dart';
 
 class MyWidget extends StatefulWidget {
   const MyWidget({super.key});
@@ -13,11 +15,11 @@ class _MyWidgetState extends State<MyWidget> {
 
   Map<String, dynamic> obj = {};
 
-  int no;       // 몹 번호
-  String name;  // 몹 이름
-  int hp;       // hp
-  int exp;      // 흭득 경험치
-  String files; // 몹IMG
+  int? no;       // 몹 번호
+  String? name;  // 몹 이름
+  int? hp;       // hp
+  int? exp;      // 흭득 경험치
+  String? files; // 몹IMG
 
   @override
   void initState() {
@@ -27,17 +29,15 @@ class _MyWidgetState extends State<MyWidget> {
 
   void mobInfo() async {
     try {
-      Response response = mobService.rand_mob();
+      Response response = await mobService.rand_mob();
       var data = response.data;
       setState( () {
         no = data["no"] as int;
         name = data["name"] as String;
         hp = data["hp"] as int;
         exp = data["exp"] as int;
-        String data["files"] as String;
-      })
-
-
+        files =  data["files"] as String;
+      });
     } catch (e) {
       print("몹 정보 불러오기 실패");
     }
