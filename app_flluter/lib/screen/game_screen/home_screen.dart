@@ -60,14 +60,15 @@ class _HomeScreenState extends State<HomeScreen> {
                 Center(
                   child: ElevatedButton(
                     onPressed: () {
-                      print("중앙 버튼 클릭");
+                      print("전투하기 버튼 클릭");
+                      Navigator.pushNamed(context, "/game/battle");
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.white.withOpacity(0.8),
                       padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 16),
                       textStyle: const TextStyle(fontSize: 18),
                     ),
-                    child: const Text("시작하기"),
+                    child: const Text("전투하기"),
                   ),
                 ),
               ],

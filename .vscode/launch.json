@@ -9,6 +9,16 @@
             "projectName": "game",
             "args": "",
             "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-SpringServerApplication<spring_server>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.aloha.spring_server.SpringServerApplication",
+            "projectName": "spring_server",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
         }
     ]
 }

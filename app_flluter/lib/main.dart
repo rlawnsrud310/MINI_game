@@ -1,3 +1,4 @@
+import 'package:app_flluter/screen/game_screen/battleStage_screen.dart';
 import 'package:app_flluter/screen/game_screen/home_screen.dart';
 import 'package:app_flluter/screen/join_screen.dart';
 import 'package:app_flluter/screen/login_screen.dart';
@@ -46,6 +47,14 @@ class MyApp extends StatelessWidget {
               pageBuilder: (context, animation, secondaryAnimation) {
                 final args = settings.arguments as Map<String, String>;
                 return HomeScreen();
+              },
+            );
+          case '/game/battle':
+            return PageRouteBuilder(
+              settings: settings,
+              pageBuilder: (context, animation, secondaryAnimation) {
+                final args = settings.arguments as Map<String, String>;
+                return BattlestageScreen();
               },
             );
         }

@@ -1,0 +1,1 @@
+SELECT * FROM mob WHERE no = 1;

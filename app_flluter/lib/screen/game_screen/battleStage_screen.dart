@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:app_flluter/service/mob_service.dart';
 import 'package:dio/dio.dart';
 
-class MyWidget extends StatefulWidget {
-  const MyWidget({super.key});
+class BattlestageScreen extends StatefulWidget {
+  const BattlestageScreen({super.key});
 
   @override
-  State<MyWidget> createState() => _MyWidgetState();
+  State<BattlestageScreen> createState() => _BattlestageScreenState();
 
 }
 
-class _MyWidgetState extends State<MyWidget> {
+class _BattlestageScreenState extends State<BattlestageScreen> {
   MobService mobService = MobService(); 
 
   Map<String, dynamic> obj = {};

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.aloha.spring_server.mapper.UserMapper">
+    
+    <!-- 회원가입 -->
+    <insert id="join">
+        INSERT INTO user (id, pw, name) 
+        VALUES (#{id}, #{pw}, #{name});
+    </insert>
+
+    <!-- 로그인 -->
+    <select id="login" resultType="Users">
+        SELECT * FROM user WHERE id = #{id};
+    </select>
+    <!-- 정보조회 -->
+    <select id="selectId" resultType="Users">
+        SELECT * FROM user WHERE id = #{id};
+    </select>
+</mapper>

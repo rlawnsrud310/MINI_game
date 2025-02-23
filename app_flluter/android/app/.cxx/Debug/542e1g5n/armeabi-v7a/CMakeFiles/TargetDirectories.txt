@@ -1,0 +1,2 @@
+D:/game_project/MINI_game/app_flluter/android/app/.cxx/Debug/542e1g5n/armeabi-v7a/CMakeFiles/edit_cache.dir
+D:/game_project/MINI_game/app_flluter/android/app/.cxx/Debug/542e1g5n/armeabi-v7a/CMakeFiles/rebuild_cache.dir
