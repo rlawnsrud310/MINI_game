@@ -1,5 +1,6 @@
 package com.aloha.spring_server.controller;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @Slf4j
@@ -65,12 +68,28 @@ public class userController {
             log.info("로그인 실패");
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
+    }
+
+    @GetMapping("/selectId")
+    public ResponseEntity<?> selectId(@RequestBody Map<String, String> data) {
+        log.info("정보 불러오기 시도");
+        try {
+            Users users = userService.selectId(data.get("id"));
+            log.info("유저 정보 : " + users);
+
+            Map<String, Object> response = new HashMap<>();
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        } catch (Exception e) {
+            log.info("정보 불러오기 에러");
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
 
     }
 
     /**
      * 경험치 레벨 수정
      * 플러터에서 계산된 값이 전달해와야함
+     * 
      * @param data
      * @return
      */
@@ -83,22 +102,24 @@ public class userController {
             String id = data.get("id");
 
             int result = userService.expLvUp(exp, lv, id);
-            if(result > 0){
+            if (result > 0) {
                 log.info("경험치 레벨 수정 완료");
                 return new ResponseEntity<>(HttpStatus.OK);
-            } else{
+            } else {
                 log.info("경험치 레벨 수정 실패");
                 return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
             }
-            
+
         } catch (Exception e) {
             log.info("에러" + e);
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
+
     /**
      * 경험치 레벨 더하기
      * 기존 디비값에 더해주기
+     * 
      * @param data
      * @return
      */
@@ -110,14 +131,14 @@ public class userController {
             String id = data.get("id");
 
             int result = userService.plusLvExp(exp, lv, id);
-            if(result > 0){
+            if (result > 0) {
                 log.info("경험치 레벨 증가 완료");
                 return new ResponseEntity<>(HttpStatus.OK);
-            } else{
+            } else {
                 log.info("경험치 레벨 수정 실패");
                 return new ResponseEntity<>(HttpStatus.BAD_GATEWAY);
             }
-            
+
         } catch (Exception e) {
             log.info("에러");
             return new ResponseEntity<>(HttpStatus.BAD_GATEWAY);
@@ -126,6 +147,7 @@ public class userController {
 
     /**
      * 공격력 변동 플러스 마이너스
+     * 
      * @param data
      * @return
      */
@@ -136,7 +158,7 @@ public class userController {
             String id = data.get("id");
             log.info(atk + id + "값 정상적으로 들어왔나?");
             int result = userService.atkPM(atk, id);
-            if(result > 0){
+            if (result > 0) {
                 log.info("공격력 변동");
                 return new ResponseEntity<>(HttpStatus.OK);
             } else {
