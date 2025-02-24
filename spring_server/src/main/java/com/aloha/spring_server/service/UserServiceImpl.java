@@ -24,6 +24,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public Users login(String id) {
         Users users = userMapper.login(id);
+        log.info(users+ "결과는?");
         return users;
     }
 
@@ -59,7 +60,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public int atkPM(int atk, String id) {
+        log.info("userServiceImpl 진입: atk={}, id={}", atk, id);
         int result = userMapper.atkPM(atk, id);
+        log.info("결과는: {}", result);
         return result;
     }
 

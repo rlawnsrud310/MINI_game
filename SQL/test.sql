@@ -17,3 +17,8 @@ UPDATE `user`
 SET exp = exp + 5,
     lv = lv + -1
 WHERE id = 'user';
+
+
+UPDATE `user`
+    SET atk = atk + 1
+WHERE id = 'user';

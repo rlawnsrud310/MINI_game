@@ -77,6 +77,7 @@ public class userController {
     @PutMapping("/explvUp")
     public ResponseEntity<?> updateExpLv(@RequestBody Map<String, String> data) {
         try {
+            log.info("user/explvUp 시도중");
             int exp = Integer.parseInt(data.get("exp"));
             int lv = Integer.parseInt(data.get("lv"));
             String id = data.get("id");
@@ -87,12 +88,12 @@ public class userController {
                 return new ResponseEntity<>(HttpStatus.OK);
             } else{
                 log.info("경험치 레벨 수정 실패");
-                return new ResponseEntity<>(HttpStatus.BAD_GATEWAY);
+                return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
             }
             
         } catch (Exception e) {
-            log.info("에러");
-            return new ResponseEntity<>(HttpStatus.BAD_GATEWAY);
+            log.info("에러" + e);
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
     /**
@@ -128,21 +129,22 @@ public class userController {
      * @param data
      * @return
      */
-    @PutMapping("/atkPM")
+    @PostMapping("/atkPM")
     public ResponseEntity<?> atkPM(@RequestBody Map<String, String> data) {
         try {
             int atk = Integer.parseInt(data.get("atk"));
             String id = data.get("id");
+            log.info(atk + id + "값 정상적으로 들어왔나?");
             int result = userService.atkPM(atk, id);
             if(result > 0){
                 log.info("공격력 변동");
                 return new ResponseEntity<>(HttpStatus.OK);
             } else {
-                log.info("공격력 변동");
+                log.info("공격력 실패");
                 return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
             }
         } catch (Exception e) {
-            log.info("공격력 변동 에러");
+            log.info("공격력 변동 에러" + e);
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }

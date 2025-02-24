@@ -1,6 +1,7 @@
 package com.aloha.spring_server.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import com.aloha.spring_server.domain.Users;
 
@@ -18,18 +19,18 @@ public interface UserMapper {
 
 // 빽 미리만듬
     // 경험치 수정
-    public int expUp(int exp, String id);
-    
+    public int expUp(@Param("exp") int exp, @Param("id") String id);
+
     // 레벨 수정
-    public int lvUp(int lv, String id);
-    
+    public int lvUp(@Param("lv") int lv, @Param("id") String id);
+
     // 경험치 레벨 동시 수정
-    public int expLvUp(int exp, int lv, String id);
-    
+    public int expLvUp(@Param("exp") int exp, @Param("lv") int lv, @Param("id") String id);
+
     // 경험치 레벨 증가
-    public int plusLvExp(int exp, int lv, String id);
+    public int plusLvExp(@Param("exp") int exp, @Param("lv") int lv, @Param("id") String id);
 
     // 공격력 변동
-    public int atkPM(int atk, String id);
+    public int atkPM(@Param("atk") int atk,@Param("id") String id);
 
 }
