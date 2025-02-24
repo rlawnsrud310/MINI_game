@@ -42,7 +42,7 @@ public class mobController {
             Mob mobInfo = mobService.selectNo(result);
             log.info("몹 정보 : " + mobInfo);
             Map<String, Object> response = new HashMap<>();
-            response.put("no", mobInfo.getName());
+            response.put("no", mobInfo.getNo());
             response.put("name", mobInfo.getName());
             response.put("hp", mobInfo.getHp());
             response.put("exp", mobInfo.getExp());
