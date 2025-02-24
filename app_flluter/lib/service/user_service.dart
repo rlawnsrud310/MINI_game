@@ -45,4 +45,18 @@ class UserService {
       return false;
     }
   }
+  // 유저 정보 꺼내기
+  Future<Response> getUesrs(String id) async {
+    Map<String, String> data = {
+      "id" : id
+    };
+    try {
+      Response response = await dio.get('$host/user/selectId', data : data);
+      print("유저 정보 : ${response.data}");
+      return response;
+    } catch (e) {
+      print("유저정보 불러오기중 에러발생");
+      rethrow;
+    }
+  }
 }

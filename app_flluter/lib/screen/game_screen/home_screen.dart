@@ -1,4 +1,6 @@
+import 'package:app_flluter/service/user_service.dart';
 import 'package:flutter/material.dart';
+import 'package:dio/dio.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -11,7 +13,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Map<String, String> obj = {};
 
-  String? id;
+  String id = "";
 
   @override
   void initState() {
@@ -99,6 +101,9 @@ class _HomeScreenState extends State<HomeScreen> {
       child: GestureDetector(
         onTap: () {
           print("$text 버튼 클릭");
+          switch(text){
+            case "내정보" : myPage(); 
+          }
         },
         child: Container(
           color: Colors.blueAccent,
@@ -110,5 +115,12 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
     );
+  }
+  UserService userService = UserService();
+  void myPage() async {
+    if(id != ""){
+      Response response = await userService.getUesrs(id);
+      print("내용 ${response.data}");
+    }
   }
 }

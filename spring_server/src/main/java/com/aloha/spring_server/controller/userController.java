@@ -78,6 +78,7 @@ public class userController {
             log.info("유저 정보 : " + users);
 
             Map<String, Object> response = new HashMap<>();
+            response.put("user", users);
             return new ResponseEntity<>(response, HttpStatus.OK);
         } catch (Exception e) {
             log.info("정보 불러오기 에러");
