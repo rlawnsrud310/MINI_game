@@ -1,26 +1,7 @@
 # MINI_game
-하루만에 만든 속성
+하루만에 만든 속성 게임
 
-#임시 내용
-table
-
-user
-- no pk auto
-- id
-- pw
-- name
-- lv
-- exp
-- atk
-
-mob
-- no pk au
-- name
-- hp
-- drop
-- exp
-- 추가예정 dropItem
-
-추가예정
-item
-- atk
+## 추가 예정
+> 레벨업 시스템
+> 아이템 장착 해제
+> 
